@@ -1,0 +1,479 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"ur",
+				"url_action"
+			],
+			[
+				"js",
+				"json_encode"
+			],
+			[
+				"ca",
+				"caption	<caption>"
+			],
+			[
+				"f",
+				"ffffff"
+			],
+			[
+				"fon",
+				"font-size"
+			],
+			[
+				"Se",
+				"SendMail"
+			],
+			[
+				"ce",
+				"cellspacing	Attr"
+			],
+			[
+				"ba",
+				"background-color"
+			],
+			[
+				"lo",
+				"loked"
+			],
+			[
+				"print",
+				"print_r"
+			],
+			[
+				"prin",
+				"print_r"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"on",
+				"onclick	Attr"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "/var/www/html/migrayii/protected/commands/directorioCommand.php",
+			"settings":
+			{
+				"buffer_size": 3620,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 390.0,
+		"last_filter": "Package Control: ",
+		"selected_items":
+		[
+			[
+				"Package Control: ",
+				"Package Control: Remove Package"
+			],
+			[
+				"Package Control: li",
+				"Package Control: Disable Package"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"package",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 449.0
+	},
+	"console":
+	{
+		"height": 139.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = 'eb2297e1a458f27d836c04bb0cbaf282' + 'd0e7a3098092775ccb37ca9d6b2e4b7d'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by) "
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/var/www/html/migrayii",
+		"/var/www/html/migrayii/protected",
+		"/var/www/html/migrayii/protected/commands"
+	],
+	"file_history":
+	[
+		"/var/www/html/sigedoalfa/protected/views/documentos/update.php",
+		"/var/www/html/sigedoalfa/css/my-custom-styles.css",
+		"/var/www/html/sigedoalfa/protected/controllers/ApiController.php",
+		"/var/www/html/sigedoalfa/protected/controllers/RequestController.php",
+		"/var/www/html/sigedoalfa/protected/extensions/actions/XSuggestAction.php",
+		"/var/www/html/sigedoalfa/protected/controllers/DocumentosController.php",
+		"/var/www/html/sigedoalfa/protected/views/documentos/_form.php",
+		"/var/www/html/sigedoalfa/protected/views/documentos/_form2.php",
+		"/var/www/html/sigedoalfa/index.php",
+		"/var/www/html/educacionporti2/index-test.php",
+		"/var/www/html/sigedoalfa/index-test.php",
+		"/home/cesar/.config/sublime-text-3/Packages/Default/Default (Linux).sublime-keymap",
+		"/var/www/html/sigedoalfa/sigedoalfa.sublime-project",
+		"/var/www/html/correosdgm/protected/commands/correosCommand.php",
+		"/home/cesar/Escritorio/mensaje.html",
+		"/var/www/html/educacionporti2/protected/views/aspirantes/create.php",
+		"/var/www/html/educacionporti2/protected/views/aspirantes/_form.php",
+		"/var/www/html/sigedoalfa/.htaccess",
+		"/var/www/html/educacionporti2/protected/models/Aspirantes.php",
+		"/var/www/html/educacionporti2/protected/models/Cursos.php",
+		"/var/www/html/educacionporti2/protected/models/Fechas.php",
+		"/var/www/html/educacionporti2/protected/models/Horarios.php",
+		"/var/www/html/educacionporti2/protected/models/Delegaciones.php",
+		"/var/www/html/educacionporti2/protected/models/Sede.php",
+		"/var/www/html/educacionporti2/protected/views/aspirantes/admin.php",
+		"/var/www/html/educacionporti2/protected/controllers/AspirantesController.php",
+		"/var/www/html/educacionporti2/protected/views/aspirantes/_criterios.php",
+		"/var/www/html/educacionporti2/protected/views/layouts/main2.php",
+		"/var/www/html/educacionporti2/protected/controllers/SiteController.php",
+		"/var/www/html/spdgm/protected/views/baseCap/_form.php",
+		"/var/www/html/educacionporti2/protected/controllers/CombosController.php",
+		"/var/www/html/educacionporti2/protected/views/aspirantes/_rpt.php",
+		"/var/www/html/spdgm/protected/controllers/BaseCapController.php",
+		"/var/www/html/spdgm/protected/controllers/BaseController.php",
+		"/var/www/html/educacionporti/protected/views/aspirantes/_form.php",
+		"/var/www/html/educacionporti/protected/models/Aspirantes.php",
+		"/var/www/html/educacionporti/protected/controllers/Aspirantes2Controller.php",
+		"/var/www/html/educacionporti/protected/controllers/AspirantesController.php",
+		"/var/www/html/eduacacionporti/protected/config/main.php",
+		"/var/www/html/educacionporti/protected/views/alumnos/_form.php",
+		"/var/www/html/educacionporti/protected/models/aspirantes2.php",
+		"/var/www/html/eduacacionporti/protected/views/layouts/main.php",
+		"/var/www/html/spdgm/protected/views/pagos/_form.php",
+		"/var/www/html/educacionporti/protected/views/aspirantes2/create.php",
+		"/var/www/html/educacionporti/protected/views/aspirantes2/_form.php",
+		"/var/www/html/spdgm/css/main.css",
+		"/var/www/html/educacionporti/css/main.css",
+		"/var/www/html/migrayii/protected/controllers/TurnosController.php",
+		"/var/www/html/educacionporti/protected/views/site/index.php",
+		"/var/www/html/educacionporti/protected/views/aspirantes2/view.php",
+		"/var/www/html/educacionporti/protected/views/aspirantes2/admin.php",
+		"/var/www/html/educacionporti/css/my-custom-styles.css",
+		"/var/www/html/educacionporti/protected/config/main.php",
+		"/var/www/html/educacionporti/protected/views/layouts/main.php",
+		"/var/www/html/spdgm/protected/controllers/PresupuestoController.php",
+		"/var/www/html/educacionporti/protected/views/aspirantes/view.php",
+		"/var/www/html/sigedoalfa/protected/config/main.php",
+		"/var/www/html/educacionporti/protected/views/aspirantes/create.php",
+		"/var/www/html/spdgm/protected/views/informesf/_criterios.php",
+		"/var/www/html/educacionportix/index.php",
+		"/var/www/html/sigedoalfa/protected/views/layouts/main.php",
+		"/var/www/html/sigedoalfa/protected/models/Documentos.php",
+		"/var/www/html/sigedoalfa/protected/views/salidaView/admin.php",
+		"/var/www/html/sigedoalfa/protected/models/SalidaView.php",
+		"/var/www/html/sigedoalfa/protected/views/documentos/_formupdate.php",
+		"/var/www/html/correo/index.html",
+		"/var/www/html/correo/dgm1.html",
+		"/home/cesar/Vídeos/Learn and Understand NodeJS/01 Introduction and Setup/002 Command Line References.html",
+		"/var/www/html/correosdgm/protected/commands/corregido.html",
+		"/var/www/html/correosdgm/protected/commands/respaldo.html",
+		"/var/www/html/correo/dgm2.html",
+		"/var/www/html/sigedoalfa/css/estilos-personalizadospdf.css",
+		"/var/www/html/sigedoalfa/protected/controllers/ApipdfController.php",
+		"/var/www/html/sigedoalfa/protected/controllers/MainController.php",
+		"/var/www/html/correosdgm/EnvioMail.php",
+		"/home/cesar/Escritorio/link.txt",
+		"/var/www/html/sigedoalfa/protected/controllers/InformesController.php",
+		"/var/www/html/sigedoalfa/protected/views/informes/cargo.php",
+		"/var/www/html/sigedoalfa/protected/views/main/index.php",
+		"/var/www/html/sigedoalfa/protected/models/TurnosList.php",
+		"/var/www/html/correosdgm/protected/extensions/phpmailer/class.phpmailer.php",
+		"/var/www/html/sigedoalfa/protected/views/informes/area.php",
+		"/var/www/html/correosdgm/correos.php",
+		"/var/www/html/correosdgm/protected/extensions/phpmailer2/JPhpMailer.php",
+		"/var/www/html/sigedoalfa/protected/views/informes/salida.php",
+		"/var/www/html/sigedoalfa/protected/views/turnosList/admin.php",
+		"/var/www/html/sigedoalfa/protected/views/directorio/admin.php",
+		"/var/www/html/sigedoalfa/protected/models/Directorio.php",
+		"/var/www/html/sigedoalfa/protected/controllers/DirectorioController.php",
+		"/var/www/html/sigedoalfa/protected/controllers/TurnosController.php",
+		"/var/www/html/sigedoalfa/protected/views/turnos/_seg.php",
+		"/var/www/html/sigedoalfa/protected/views/turnos/seg.php",
+		"/var/www/html/sigedoalfa/protected/views/turnos/_info.php",
+		"/var/www/html/sigedoalfa/protected/views/turnos/_form2.php",
+		"/var/www/html/sigedoalfa/protected/controllers/TurnosControllerresp.php",
+		"/var/www/html/migrayii/protected/models/Directoriof.php",
+		"/var/www/html/migrayii/protected/controllers/DirectorioController.php",
+		"/var/www/html/migrayii/protected/models/Directorio.php",
+		"/var/www/html/migrayii/protected/controllers/DatosPersonalesController.php",
+		"/var/www/html/pantallas2/index.html",
+		"/var/www/html/spdgm/protected/controllers/BaseCapControllerRESP.php",
+		"/var/www/html/pantallas1/index.html",
+		"/var/www/html/pantallas3/index.html",
+		"/var/www/html/pantallas3/style.css",
+		"/var/www/html/pantallas4/index.html",
+		"/var/www/html/pantallas4/controls.js",
+		"/var/www/html/pantallas4/style.css",
+		"/media/cesar/TOSHIBA EXT/Videotutoriales/Front-End/CreatingFullscreen-0-SoftArchive.net/Creating Fullscreen HTML5 Video Backgrounds/06_begin/index.html",
+		"/media/cesar/TOSHIBA EXT/Videotutoriales/Front-End/0-Sanet.Me-0LcDesWebHTMLBackgrVideo.part1/Exercise Files/index.html",
+		"/media/cesar/TOSHIBA EXT/Videotutoriales/Front-End/CreatingFullscreen-0-SoftArchive.net/Creating Fullscreen HTML5 Video Backgrounds/08_begin/index.html",
+		"/media/cesar/TOSHIBA EXT/Videotutoriales/Front-End/CreatingFullscreen-0-SoftArchive.net/Creating Fullscreen HTML5 Video Backgrounds/08_begin/scripts/responsive-nav.min.js",
+		"/media/cesar/TOSHIBA EXT/Videotutoriales/Front-End/CreatingFullscreen-0-SoftArchive.net/Creating Fullscreen HTML5 Video Backgrounds/09_begin/index.html",
+		"/media/cesar/TOSHIBA EXT/Videotutoriales/Front-End/CreatingFullscreen-0-SoftArchive.net/Creating Fullscreen HTML5 Video Backgrounds/10_end/index.html",
+		"/media/cesar/TOSHIBA EXT/Videotutoriales/Front-End/CreatingFullscreen-0-SoftArchive.net/Creating Fullscreen HTML5 Video Backgrounds/10_begin/index.html",
+		"/var/www/html/spdgm/protected/models/BaseCap.php",
+		"/home/cesar/.config/sublime-text-3/Packages/User/Package Control.sublime-settings",
+		"/var/www/html/spdgm/themes/abound/views/layouts/tpl_navigation.php",
+		"/var/www/html/spdgm/protected/views/baseCap/javascript.js",
+		"/home/cesar/.config/sublime-text-3/Packages/Highlighter/highlighter.sublime-settings",
+		"/var/www/html/spdgm/themes/abound/views/layouts/main.php",
+		"/var/www/html/spdgm/protected/controllers/PagosController.php",
+		"/home/cesar/meteorjs/leaderboard/leaderboard.html",
+		"/var/www/html/spdgm/.htaccess",
+		"/var/www/html/spdgm/protected/views/base/_criterios.php",
+		"/home/cesar/meteorjs/leaderboard/leaderboard.css",
+		"/var/www/html/sigedoalfa/protected/views/documentos/_update.php",
+		"/var/www/html/sigedoalfa/protected/views/turnos/create.php",
+		"/var/www/html/sigedoalfa/protected/views/turnos/update.php"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"where",
+			"destinatarios",
+			"LINE",
+			"NEXT",
+			"\\",
+			"traerlugares",
+			"control-label",
+			" >",
+			"bgcolor=\"#000000\" ",
+			"bgcolor=\"#000000\"",
+			" >",
+			"bgcolor=\"#000000\" ",
+			"bgcolor=\"#000000\"",
+			"copiasIds",
+			"model",
+			"\"",
+			"\\\">",
+			"\"",
+			";\\\">\n",
+			";\\\">",
+			"\"",
+			"\">\n",
+			"es\">",
+			"\"",
+			"width",
+			"alt=\"The Pulpit Rock\" ",
+			"alt=\"The Pulpit Rock\"",
+			"red",
+			"localhost",
+			"10px",
+			"48px",
+			"48",
+			"48px",
+			"48",
+			"loclahost",
+			"228",
+			"120px",
+			"180px",
+			"article",
+			"padding: 0px 0px",
+			"112px",
+			"doc_respuesta",
+			"rem",
+			"../js",
+			"../img",
+			"CONFIRM",
+			"model2",
+			"model",
+			"fecha_acuse",
+			"short",
+			"echo",
+			"20px",
+			"alert('Suma is ='+(a+b).toString());\n",
+			"buscar",
+			"countryIds",
+			"fecha_mod",
+			"ID_DIRECTORIO",
+			"estado",
+			"docto_search"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "/var/www/html/migrayii/protected/commands/directorioCommand.php",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 3620,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "migrayii.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"sigedoalfa/.htaccess"
+			],
+			[
+				"i",
+				"spdgm/index.php"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"/var/www/html/sigedoalfa/sigedoalfa.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 348.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

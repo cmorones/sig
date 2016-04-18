@@ -1,0 +1,192 @@
+body {
+  background-color: #ffffff;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 12px;
+  color: #494949;
+}
+/*	
+*	################################################################################
+*	
+*	My Custom Style for KINGADMIN
+*	---------------------------------------------------------------------
+*
+*	Version		1.0
+*	Author		Your Name
+*	
+*	Override theme style or create your new styles. Direct change to main.css
+*	is not recommended to avoid problems when theme updates arrived in the future
+*	
+*	################################################################################
+*/
+
+/* Include the font files */
+@font-face{font-family:'FontAwesome';
+src:url('../fonts/fontawesome-webfont.eot?v=4.0.3');
+src:url('../fonts/fontawesome-webfont.eot?#iefix&v=4.0.3') format('embedded-opentype'),
+url('../fonts/fontawesome-webfont.woff?v=4.0.3') format('woff'),
+url('../fonts/fontawesome-webfont.ttf?v=4.0.3') format('truetype'),
+url('../fonts/fontawesome-webfont.svg?v=4.0.3#fontawesomeregular') format('svg');
+font-weight:normal;font-style:normal}
+
+.democlass {
+    position: relative;
+}
+ 
+/*replace the content value with the 
+corresponding value from the list below*/
+ 
+.democlass:before {
+    content: "\f000"; 
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
+/*--adjust as necessary--*/
+    color: #000;
+    font-size: 18px;
+    padding-right: 0.5em;
+    position: absolute;
+    top: 10px;
+    left: 0;
+}
+
+.collogosHeader {
+  padding-right: 0;
+
+}
+
+ .coltituloHeader, .colcdmxHeader, .collogosHeader {
+    text-align: center;
+  }
+
+  .coltituloHeader {
+    padding-bottom: 20px;
+  }
+
+   .coltituloHeader {
+    text-align: left;
+    padding-left: 60px;
+  }
+
+  .colcdmxHeader {
+    text-align: right;
+  }
+}
+
+/*@media (min-width: 1200px) {
+  .calendarContainer .row .col-md-9 {
+    padding-right: 0px;
+  }*/
+
+@media (min-width: 1200px) and (max-width: 1300px) {
+  .coltituloHeader {
+    text-align: left;
+    padding-left: 15;
+  }
+
+  .colcdmxHeader {
+    text-align: right;
+  }
+}
+
+@media (min-width: 1301px) and (max-width: 1370px) {
+  .coltituloHeader {
+    text-align: left;
+    padding-left: 0;
+  }
+
+  .colcdmxHeader {
+    text-align: right;
+  }
+}
+
+@media (min-width: 1371px) {
+  .coltituloHeader {
+    text-align: left;
+    padding-left: 0;
+  }
+
+  .colcdmxHeader {
+    text-align: right;
+  }
+}
+
+.page-header h2 {
+  margin-left: 42px;
+}
+
+.tituloHeader{
+  color: #6D6E70;
+  font-weight: lighter;
+  /*margin-top: 15px;*/
+  margin: 0;
+}
+
+.tituloHeader span {
+  font-weight: bold;
+}
+
+#header {
+  font-weight: lighter;
+}
+
+.errorMessage {
+  color: red;
+  font-weight: bold;
+}
+
+.subtitulo1{
+    color: #404040;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: left;
+  margin-bottom: 0px;
+  font-family: Rokkitt, serif;
+
+font-weight: bold;
+}
+
+.subtitulo2{
+    color: #404040;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 0px;
+  font-family: Rokkitt, serif;
+
+font-weight: bold;
+}
+
+.docto{
+     color: red;
+  font-size: 24px; 
+}
+
+.blanco{
+     color:  #F9F9F9;
+  font-size: 24px; 
+}
+
+.tdt {
+  text-align: right;
+}
+
+a {
+    color: #f9f9f9;
+    text-decoration: none;
+}
+
+
+.logossig {
+  width: 100px; height: 100px;
+}
+
+.expediente{
+     color: green;
+  font-size: 18px; 
+}
+
+.tips{
+     color: red;
+  font-size: 16px; 
+}

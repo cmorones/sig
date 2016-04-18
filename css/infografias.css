@@ -1,0 +1,54 @@
+.sectionInfografias{
+  display: inline-block;
+
+}
+.Work-item{
+    display: inline-block;
+    margin-right: 1.8em;
+    margin-bottom: 1.8em;
+}
+
+.Work-imageContainer{
+    
+    margin: 0;
+   
+}
+.box {
+  display: inline-block;
+  width: 400px;
+  height: 150px;
+  margin: 5em;
+}
+
+.Work-images{
+     display: inline;
+}
+.Work-image1{
+    margin: 0;
+    width: 100%;
+    height: 100%;
+}
+
+ul#cols li {
+  width: 30%;
+  padding: 0;
+  display: inline-block;
+  margin: 0px 1%;
+  background-color: #FFFFFF;
+}
+
+ul#cols li img {
+  width: 100%;
+}
+
+ul#cols li h2 {
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+  margin: 5px 0;
+}
+
+ul#cols li p {
+  font-size: 12px;
+}
