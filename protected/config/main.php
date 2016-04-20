@@ -109,7 +109,7 @@ return array(
 		),*/
 
 		  'db'=>array(
-		      'connectionString' => 'pgsql:host=localhost;port=5432;dbname=sigedo',
+		      'connectionString' => 'pgsql:host=localhost;port=5432;dbname=sig',
                       //'connectionString' => 'pgsql:host=localhost;dbname=sigiems',
 	        	'emulatePrepare' => true,
 		        'username' => 'kylix',
