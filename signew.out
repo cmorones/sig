@@ -1,0 +1,1549 @@
+--
+-- PostgreSQL database dump
+--
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+
+--
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET search_path = public, pg_catalog;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- Name: correspondencia; Type: TABLE; Schema: public; Owner: kylix; Tablespace: 
+--
+
+CREATE TABLE correspondencia (
+    id integer NOT NULL,
+    id_docto integer,
+    folio integer,
+    folio_inst integer,
+    destinatario integer,
+    tipo integer,
+    estado_acuse integer DEFAULT 0 NOT NULL,
+    fecha_acuse date,
+    caracter integer,
+    estado_rem integer,
+    estado_dest integer,
+    estado integer,
+    fecha_reg timestamp without time zone,
+    fecha_mod timestamp without time zone,
+    user_reg integer,
+    user_mod integer,
+    doc_archivo character varying,
+    estado_archivo integer DEFAULT 0
+);
+
+
+ALTER TABLE correspondencia OWNER TO kylix;
+
+--
+-- Name: datos_personales; Type: TABLE; Schema: public; Owner: kylix; Tablespace: 
+--
+
+CREATE TABLE datos_personales (
+    id integer NOT NULL,
+    nombre character varying(200),
+    apellido_p character varying(200),
+    apellido_m character varying(200),
+    genero character varying(10),
+    fecha_nac date,
+    email character varying(100),
+    status integer,
+    fecha_reg timestamp without time zone,
+    fecha_mod timestamp without time zone,
+    user_reg integer,
+    user_mod integer
+);
+
+
+ALTER TABLE datos_personales OWNER TO kylix;
+
+--
+-- Name: directorio; Type: TABLE; Schema: public; Owner: kylix; Tablespace: 
+--
+
+CREATE TABLE directorio (
+    id integer NOT NULL,
+    id_area integer,
+    id_dp integer,
+    cargo character varying(300),
+    status integer,
+    fecha_reg date,
+    fecha_mod date,
+    user_reg integer,
+    user_mod integer,
+    id_grupo integer
+);
+
+
+ALTER TABLE directorio OWNER TO kylix;
+
+--
+-- Name: documentos; Type: TABLE; Schema: public; Owner: kylix; Tablespace: 
+--
+
+CREATE TABLE documentos (
+    id integer NOT NULL,
+    remitente integer,
+    documento text,
+    referencia text,
+    tipo_docto integer,
+    asunto text,
+    tipo_caracter integer,
+    fecha date,
+    estado integer,
+    fecha_reg date,
+    fecha_mod date,
+    user_reg integer,
+    user_mod integer
+);
+
+
+ALTER TABLE documentos OWNER TO kylix;
+
+--
+-- Name: admin_final; Type: VIEW; Schema: public; Owner: kylix
+--
+
+CREATE VIEW admin_final AS
+ SELECT correspondencia.id,
+    documentos.documento,
+    directorio.id_area,
+    directorio.cargo,
+    directorio2.cargo AS cargo_des,
+    directorio2.id_area AS area_des,
+    datos_personales.nombre,
+    datos_personales.apellido_p,
+    datos_personales.apellido_m,
+    datos_personales2.nombre AS nombre_des,
+    datos_personales2.apellido_p AS apellidop_des,
+    datos_personales2.apellido_m AS apellidom_des,
+    correspondencia.tipo,
+    documentos.tipo_docto,
+    documentos.asunto,
+    documentos.fecha
+   FROM (((((documentos
+     JOIN correspondencia ON ((documentos.id = correspondencia.id_docto)))
+     JOIN directorio ON ((documentos.remitente = directorio.id)))
+     JOIN directorio directorio2 ON ((correspondencia.destinatario = directorio2.id)))
+     JOIN datos_personales ON ((directorio.id_dp = datos_personales.id)))
+     JOIN datos_personales datos_personales2 ON ((directorio2.id_dp = datos_personales2.id)))
+  WHERE (documentos.estado = 1);
+
+
+ALTER TABLE admin_final OWNER TO kylix;
+
+--
+-- Name: admin_vista; Type: VIEW; Schema: public; Owner: kylix
+--
+
+CREATE VIEW admin_vista AS
+ SELECT documentos.documento,
+    directorio.id_area,
+    directorio.cargo,
+    directorio2.cargo AS cargo_des,
+    directorio2.id_area AS area_des,
+    datos_personales.nombre,
+    datos_personales.apellido_p,
+    datos_personales.apellido_m,
+    datos_personales2.nombre AS nombre_des,
+    datos_personales2.apellido_p AS apellidop_des,
+    datos_personales2.apellido_m AS apellidom_des,
+    correspondencia.tipo,
+    documentos.tipo_docto,
+    documentos.asunto,
+    documentos.fecha
+   FROM (((((documentos
+     JOIN correspondencia ON ((documentos.id = correspondencia.id_docto)))
+     JOIN directorio ON ((documentos.remitente = directorio.id)))
+     JOIN directorio directorio2 ON ((correspondencia.destinatario = directorio2.id)))
+     JOIN datos_personales ON ((directorio.id_dp = datos_personales.id)))
+     JOIN datos_personales datos_personales2 ON ((directorio2.id_dp = datos_personales2.id)))
+  WHERE (documentos.estado = 1);
+
+
+ALTER TABLE admin_vista OWNER TO kylix;
+
+--
+-- Name: areas; Type: TABLE; Schema: public; Owner: kylix; Tablespace: 
+--
+
+CREATE TABLE areas (
+    id integer NOT NULL,
+    id_dep integer,
+    acronimo character varying(100),
+    nombre character varying(255),
+    nivel integer,
+    status integer,
+    fecha_reg date,
+    fecha_mod date,
+    user_reg integer,
+    user_mod integer
+);
+
+
+ALTER TABLE areas OWNER TO kylix;
+
+--
+-- Name: areas_id_seq; Type: SEQUENCE; Schema: public; Owner: kylix
+--
+
+CREATE SEQUENCE areas_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE areas_id_seq OWNER TO kylix;
+
+--
+-- Name: areas_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: kylix
+--
+
+ALTER SEQUENCE areas_id_seq OWNED BY areas.id;
+
+
+--
+-- Name: cat_caracter; Type: TABLE; Schema: public; Owner: kylix; Tablespace: 
+--
+
+CREATE TABLE cat_caracter (
+    id integer NOT NULL,
+    nombre character varying(30)
+);
+
+
+ALTER TABLE cat_caracter OWNER TO kylix;
+
+--
+-- Name: cat_caracter_id_seq; Type: SEQUENCE; Schema: public; Owner: kylix
+--
+
+CREATE SEQUENCE cat_caracter_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE cat_caracter_id_seq OWNER TO kylix;
+
+--
+-- Name: cat_caracter_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: kylix
+--
+
+ALTER SEQUENCE cat_caracter_id_seq OWNED BY cat_caracter.id;
+
+
+--
+-- Name: cat_grupo; Type: TABLE; Schema: public; Owner: kylix; Tablespace: 
+--
+
+CREATE TABLE cat_grupo (
+    id integer NOT NULL,
+    "Nombre" character varying(255)
+);
+
+
+ALTER TABLE cat_grupo OWNER TO kylix;
+
+--
+-- Name: cat_grupo_id_seq; Type: SEQUENCE; Schema: public; Owner: kylix
+--
+
+CREATE SEQUENCE cat_grupo_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE cat_grupo_id_seq OWNER TO kylix;
+
+--
+-- Name: cat_grupo_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: kylix
+--
+
+ALTER SEQUENCE cat_grupo_id_seq OWNED BY cat_grupo.id;
+
+
+--
+-- Name: cat_instrucciones; Type: TABLE; Schema: public; Owner: kylix; Tablespace: 
+--
+
+CREATE TABLE cat_instrucciones (
+    id integer NOT NULL,
+    nombre character varying(100)
+);
+
+
+ALTER TABLE cat_instrucciones OWNER TO kylix;
+
+--
+-- Name: cat_instrucciones_id_seq; Type: SEQUENCE; Schema: public; Owner: kylix
+--
+
+CREATE SEQUENCE cat_instrucciones_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE cat_instrucciones_id_seq OWNER TO kylix;
+
+--
+-- Name: cat_instrucciones_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: kylix
+--
+
+ALTER SEQUENCE cat_instrucciones_id_seq OWNED BY cat_instrucciones.id;
+
+
+--
+-- Name: cat_perfiles; Type: TABLE; Schema: public; Owner: kylix; Tablespace: 
+--
+
+CREATE TABLE cat_perfiles (
+    id integer NOT NULL,
+    nombre character varying(30)
+);
+
+
+ALTER TABLE cat_perfiles OWNER TO kylix;
+
+--
+-- Name: cat_perfiles_id_seq; Type: SEQUENCE; Schema: public; Owner: kylix
+--
+
+CREATE SEQUENCE cat_perfiles_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE cat_perfiles_id_seq OWNER TO kylix;
+
+--
+-- Name: cat_perfiles_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: kylix
+--
+
+ALTER SEQUENCE cat_perfiles_id_seq OWNED BY cat_perfiles.id;
+
+
+--
+-- Name: cat_status; Type: TABLE; Schema: public; Owner: kylix; Tablespace: 
+--
+
+CREATE TABLE cat_status (
+    id smallint NOT NULL,
+    "Nombre" character varying(255)
+);
+
+
+ALTER TABLE cat_status OWNER TO kylix;
+
+--
+-- Name: cat_status_id_seq; Type: SEQUENCE; Schema: public; Owner: kylix
+--
+
+CREATE SEQUENCE cat_status_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE cat_status_id_seq OWNER TO kylix;
+
+--
+-- Name: cat_status_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: kylix
+--
+
+ALTER SEQUENCE cat_status_id_seq OWNED BY cat_status.id;
+
+
+--
+-- Name: cat_status_turno; Type: TABLE; Schema: public; Owner: kylix; Tablespace: 
+--
+
+CREATE TABLE cat_status_turno (
+    id integer NOT NULL,
+    nombre character varying(30)
+);
+
+
+ALTER TABLE cat_status_turno OWNER TO kylix;
+
+--
+-- Name: cat_status_turno_id_seq; Type: SEQUENCE; Schema: public; Owner: kylix
+--
+
+CREATE SEQUENCE cat_status_turno_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE cat_status_turno_id_seq OWNER TO kylix;
+
+--
+-- Name: cat_status_turno_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: kylix
+--
+
+ALTER SEQUENCE cat_status_turno_id_seq OWNED BY cat_status_turno.id;
+
+
+--
+-- Name: correspondencia_id_seq; Type: SEQUENCE; Schema: public; Owner: kylix
+--
+
+CREATE SEQUENCE correspondencia_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE correspondencia_id_seq OWNER TO kylix;
+
+--
+-- Name: correspondencia_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: kylix
+--
+
+ALTER SEQUENCE correspondencia_id_seq OWNED BY correspondencia.id;
+
+
+--
+-- Name: datos_personales_id_seq; Type: SEQUENCE; Schema: public; Owner: kylix
+--
+
+CREATE SEQUENCE datos_personales_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE datos_personales_id_seq OWNER TO kylix;
+
+--
+-- Name: datos_personales_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: kylix
+--
+
+ALTER SEQUENCE datos_personales_id_seq OWNED BY datos_personales.id;
+
+
+--
+-- Name: directorio_id_seq; Type: SEQUENCE; Schema: public; Owner: kylix
+--
+
+CREATE SEQUENCE directorio_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE directorio_id_seq OWNER TO kylix;
+
+--
+-- Name: directorio_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: kylix
+--
+
+ALTER SEQUENCE directorio_id_seq OWNED BY directorio.id;
+
+
+--
+-- Name: directorio_view; Type: VIEW; Schema: public; Owner: kylix
+--
+
+CREATE VIEW directorio_view AS
+ SELECT areas.nombre AS area_nom,
+    datos_personales.nombre,
+    datos_personales.apellido_p,
+    datos_personales.apellido_m,
+    directorio.fecha_reg,
+    directorio.cargo,
+    directorio.status,
+    directorio.id_dp,
+    directorio.id,
+    directorio.id_grupo,
+    areas.id AS id_area
+   FROM ((directorio
+     JOIN areas ON ((areas.id = directorio.id_area)))
+     JOIN datos_personales ON ((directorio.id_dp = datos_personales.id)));
+
+
+ALTER TABLE directorio_view OWNER TO kylix;
+
+--
+-- Name: documentos_id_seq; Type: SEQUENCE; Schema: public; Owner: kylix
+--
+
+CREATE SEQUENCE documentos_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE documentos_id_seq OWNER TO kylix;
+
+--
+-- Name: documentos_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: kylix
+--
+
+ALTER SEQUENCE documentos_id_seq OWNED BY documentos.id;
+
+
+--
+-- Name: tipo_copia; Type: TABLE; Schema: public; Owner: kylix; Tablespace: 
+--
+
+CREATE TABLE tipo_copia (
+    id integer NOT NULL,
+    nombre character varying(100)
+);
+
+
+ALTER TABLE tipo_copia OWNER TO kylix;
+
+--
+-- Name: tipo_doc; Type: TABLE; Schema: public; Owner: kylix; Tablespace: 
+--
+
+CREATE TABLE tipo_doc (
+    id integer NOT NULL,
+    alias character varying(20),
+    nombre character varying(100),
+    permiso integer DEFAULT 1
+);
+
+
+ALTER TABLE tipo_doc OWNER TO kylix;
+
+--
+-- Name: entrada_view; Type: VIEW; Schema: public; Owner: kylix
+--
+
+CREATE VIEW entrada_view AS
+ SELECT correspondencia.folio,
+    documentos.fecha,
+    documentos.documento,
+    documentos.asunto,
+    correspondencia.estado_acuse,
+    directorio.id_area,
+    tipo_doc.nombre,
+    tipo_copia.nombre AS nombre2,
+    correspondencia.id
+   FROM ((((correspondencia
+     JOIN documentos ON ((documentos.id = correspondencia.id_docto)))
+     JOIN directorio ON ((correspondencia.destinatario = directorio.id)))
+     JOIN tipo_doc ON ((tipo_doc.id = documentos.tipo_docto)))
+     JOIN tipo_copia ON ((correspondencia.tipo = tipo_copia.id)));
+
+
+ALTER TABLE entrada_view OWNER TO kylix;
+
+--
+-- Name: estado_correspondencia; Type: TABLE; Schema: public; Owner: kylix; Tablespace: 
+--
+
+CREATE TABLE estado_correspondencia (
+    id integer NOT NULL,
+    nombre character varying(100)
+);
+
+
+ALTER TABLE estado_correspondencia OWNER TO kylix;
+
+--
+-- Name: estado_correspondencia_id_seq; Type: SEQUENCE; Schema: public; Owner: kylix
+--
+
+CREATE SEQUENCE estado_correspondencia_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE estado_correspondencia_id_seq OWNER TO kylix;
+
+--
+-- Name: estado_correspondencia_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: kylix
+--
+
+ALTER SEQUENCE estado_correspondencia_id_seq OWNED BY estado_correspondencia.id;
+
+
+--
+-- Name: expedientes; Type: TABLE; Schema: public; Owner: kylix; Tablespace: 
+--
+
+CREATE TABLE expedientes (
+    id integer NOT NULL,
+    id_corresp integer,
+    serie character varying(255),
+    expediente character varying(255),
+    fecha_reg date,
+    fecha_mod date,
+    user_reg integer,
+    user_mod integer
+);
+
+
+ALTER TABLE expedientes OWNER TO kylix;
+
+--
+-- Name: expedientes_id_seq; Type: SEQUENCE; Schema: public; Owner: kylix
+--
+
+CREATE SEQUENCE expedientes_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE expedientes_id_seq OWNER TO kylix;
+
+--
+-- Name: expedientes_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: kylix
+--
+
+ALTER SEQUENCE expedientes_id_seq OWNED BY expedientes.id;
+
+
+--
+-- Name: menus; Type: TABLE; Schema: public; Owner: kylix; Tablespace: 
+--
+
+CREATE TABLE menus (
+    id integer NOT NULL,
+    parent_id integer,
+    "position" integer,
+    label character varying(100),
+    link character varying(100),
+    nivel integer
+);
+
+
+ALTER TABLE menus OWNER TO kylix;
+
+--
+-- Name: menus_id_seq; Type: SEQUENCE; Schema: public; Owner: kylix
+--
+
+CREATE SEQUENCE menus_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE menus_id_seq OWNER TO kylix;
+
+--
+-- Name: menus_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: kylix
+--
+
+ALTER SEQUENCE menus_id_seq OWNED BY menus.id;
+
+
+--
+-- Name: permisos; Type: TABLE; Schema: public; Owner: kylix; Tablespace: 
+--
+
+CREATE TABLE permisos (
+    id integer NOT NULL,
+    id_menu integer,
+    id_perfil integer,
+    parent_id integer,
+    label character varying(100),
+    "position" integer,
+    link character varying(100),
+    bloq integer
+);
+
+
+ALTER TABLE permisos OWNER TO kylix;
+
+--
+-- Name: permisos_id_seq; Type: SEQUENCE; Schema: public; Owner: kylix
+--
+
+CREATE SEQUENCE permisos_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE permisos_id_seq OWNER TO kylix;
+
+--
+-- Name: permisos_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: kylix
+--
+
+ALTER SEQUENCE permisos_id_seq OWNED BY permisos.id;
+
+
+--
+-- Name: salida_view; Type: VIEW; Schema: public; Owner: kylix
+--
+
+CREATE VIEW salida_view AS
+ SELECT correspondencia.folio,
+    documentos.documento,
+    documentos.fecha,
+    documentos.estado,
+    correspondencia.estado_acuse,
+    directorio.id_area,
+    tipo_doc.nombre,
+    documentos.id,
+    tipo_copia.nombre AS tipoc,
+    documentos.asunto,
+    correspondencia.tipo,
+    correspondencia.id AS idc
+   FROM ((((documentos
+     JOIN correspondencia ON ((documentos.id = correspondencia.id_docto)))
+     JOIN directorio ON ((directorio.id = documentos.remitente)))
+     JOIN tipo_doc ON ((tipo_doc.id = documentos.tipo_docto)))
+     JOIN tipo_copia ON ((correspondencia.tipo = tipo_copia.id)));
+
+
+ALTER TABLE salida_view OWNER TO kylix;
+
+--
+-- Name: tipo_copia_id_seq; Type: SEQUENCE; Schema: public; Owner: kylix
+--
+
+CREATE SEQUENCE tipo_copia_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE tipo_copia_id_seq OWNER TO kylix;
+
+--
+-- Name: tipo_copia_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: kylix
+--
+
+ALTER SEQUENCE tipo_copia_id_seq OWNED BY tipo_copia.id;
+
+
+--
+-- Name: tipo_doc_id_seq; Type: SEQUENCE; Schema: public; Owner: kylix
+--
+
+CREATE SEQUENCE tipo_doc_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE tipo_doc_id_seq OWNER TO kylix;
+
+--
+-- Name: tipo_doc_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: kylix
+--
+
+ALTER SEQUENCE tipo_doc_id_seq OWNED BY tipo_doc.id;
+
+
+--
+-- Name: turnos; Type: TABLE; Schema: public; Owner: kylix; Tablespace: 
+--
+
+CREATE TABLE turnos (
+    id integer NOT NULL,
+    folio integer,
+    id_corresp integer,
+    remitente integer,
+    estado_rem integer,
+    destinatario integer,
+    estado_dest integer,
+    instruccion1 integer,
+    instruccion2 integer,
+    instruccion_adicional character varying(500),
+    caracter integer,
+    fecha_plazo date,
+    doc_respuesta character varying(200),
+    solucion character varying(5000),
+    fecha_turno date,
+    fecha_solucion date,
+    estado_sol integer,
+    estado integer,
+    fecha_reg timestamp without time zone,
+    fecha_mod timestamp without time zone,
+    user_reg integer,
+    user_mod integer,
+    num_expediente character varying
+);
+
+
+ALTER TABLE turnos OWNER TO kylix;
+
+--
+-- Name: turnos_id_seq; Type: SEQUENCE; Schema: public; Owner: kylix
+--
+
+CREATE SEQUENCE turnos_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE turnos_id_seq OWNER TO kylix;
+
+--
+-- Name: turnos_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: kylix
+--
+
+ALTER SEQUENCE turnos_id_seq OWNED BY turnos.id;
+
+
+--
+-- Name: turnos_view; Type: VIEW; Schema: public; Owner: kylix
+--
+
+CREATE VIEW turnos_view AS
+ SELECT turnos.folio,
+    turnos.estado,
+    turnos.destinatario,
+    directorio.id_area,
+    turnos.fecha_turno,
+    turnos.estado_sol,
+    documentos.documento,
+    documentos.asunto,
+    turnos.id,
+    turnos.remitente,
+    directorio2.id_area AS id_area2
+   FROM ((((turnos
+     JOIN directorio ON ((turnos.destinatario = directorio.id)))
+     JOIN correspondencia ON ((correspondencia.id = turnos.id_corresp)))
+     JOIN documentos ON ((documentos.id = correspondencia.id_docto)))
+     JOIN directorio directorio2 ON ((turnos.remitente = directorio2.id)));
+
+
+ALTER TABLE turnos_view OWNER TO kylix;
+
+--
+-- Name: usuarios; Type: TABLE; Schema: public; Owner: kylix; Tablespace: 
+--
+
+CREATE TABLE usuarios (
+    id integer NOT NULL,
+    id_area integer,
+    id_dp integer,
+    id_perfil integer,
+    usuario character varying(255),
+    password character varying(255),
+    status integer,
+    fecha_reg date,
+    fecha_mod date,
+    user_reg integer,
+    user_mod integer,
+    ip character varying(255)
+);
+
+
+ALTER TABLE usuarios OWNER TO kylix;
+
+--
+-- Name: usuarios_id_seq; Type: SEQUENCE; Schema: public; Owner: kylix
+--
+
+CREATE SEQUENCE usuarios_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE usuarios_id_seq OWNER TO kylix;
+
+--
+-- Name: usuarios_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: kylix
+--
+
+ALTER SEQUENCE usuarios_id_seq OWNED BY usuarios.id;
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: kylix
+--
+
+ALTER TABLE ONLY areas ALTER COLUMN id SET DEFAULT nextval('areas_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: kylix
+--
+
+ALTER TABLE ONLY cat_caracter ALTER COLUMN id SET DEFAULT nextval('cat_caracter_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: kylix
+--
+
+ALTER TABLE ONLY cat_grupo ALTER COLUMN id SET DEFAULT nextval('cat_grupo_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: kylix
+--
+
+ALTER TABLE ONLY cat_instrucciones ALTER COLUMN id SET DEFAULT nextval('cat_instrucciones_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: kylix
+--
+
+ALTER TABLE ONLY cat_perfiles ALTER COLUMN id SET DEFAULT nextval('cat_perfiles_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: kylix
+--
+
+ALTER TABLE ONLY cat_status ALTER COLUMN id SET DEFAULT nextval('cat_status_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: kylix
+--
+
+ALTER TABLE ONLY cat_status_turno ALTER COLUMN id SET DEFAULT nextval('cat_status_turno_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: kylix
+--
+
+ALTER TABLE ONLY correspondencia ALTER COLUMN id SET DEFAULT nextval('correspondencia_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: kylix
+--
+
+ALTER TABLE ONLY datos_personales ALTER COLUMN id SET DEFAULT nextval('datos_personales_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: kylix
+--
+
+ALTER TABLE ONLY directorio ALTER COLUMN id SET DEFAULT nextval('directorio_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: kylix
+--
+
+ALTER TABLE ONLY documentos ALTER COLUMN id SET DEFAULT nextval('documentos_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: kylix
+--
+
+ALTER TABLE ONLY estado_correspondencia ALTER COLUMN id SET DEFAULT nextval('estado_correspondencia_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: kylix
+--
+
+ALTER TABLE ONLY expedientes ALTER COLUMN id SET DEFAULT nextval('expedientes_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: kylix
+--
+
+ALTER TABLE ONLY menus ALTER COLUMN id SET DEFAULT nextval('menus_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: kylix
+--
+
+ALTER TABLE ONLY permisos ALTER COLUMN id SET DEFAULT nextval('permisos_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: kylix
+--
+
+ALTER TABLE ONLY tipo_copia ALTER COLUMN id SET DEFAULT nextval('tipo_copia_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: kylix
+--
+
+ALTER TABLE ONLY tipo_doc ALTER COLUMN id SET DEFAULT nextval('tipo_doc_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: kylix
+--
+
+ALTER TABLE ONLY turnos ALTER COLUMN id SET DEFAULT nextval('turnos_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: kylix
+--
+
+ALTER TABLE ONLY usuarios ALTER COLUMN id SET DEFAULT nextval('usuarios_id_seq'::regclass);
+
+
+--
+-- Data for Name: areas; Type: TABLE DATA; Schema: public; Owner: kylix
+--
+
+COPY areas (id, id_dep, acronimo, nombre, nivel, status, fecha_reg, fecha_mod, user_reg, user_mod) FROM stdin;
+1	0		Dirección General	1	1	\N	\N	\N	\N
+2	1		Coordinador Ejecutivo del PREBU	2	1	\N	\N	\N	\N
+3	1		Contraloría Interna	2	1	\N	\N	\N	\N
+4	1		Coordinación del Programa Niñ@s y Jóvenes Talento	2	1	\N	\N	\N	\N
+5	0		Dirección de Informática	2	1	\N	\N	\N	\N
+\.
+
+
+--
+-- Name: areas_id_seq; Type: SEQUENCE SET; Schema: public; Owner: kylix
+--
+
+SELECT pg_catalog.setval('areas_id_seq', 5, true);
+
+
+--
+-- Data for Name: cat_caracter; Type: TABLE DATA; Schema: public; Owner: kylix
+--
+
+COPY cat_caracter (id, nombre) FROM stdin;
+1	NORMAL
+2	URGENTE
+3	CONFIDENCIAL
+\.
+
+
+--
+-- Name: cat_caracter_id_seq; Type: SEQUENCE SET; Schema: public; Owner: kylix
+--
+
+SELECT pg_catalog.setval('cat_caracter_id_seq', 3, true);
+
+
+--
+-- Data for Name: cat_grupo; Type: TABLE DATA; Schema: public; Owner: kylix
+--
+
+COPY cat_grupo (id, "Nombre") FROM stdin;
+1	Directores
+2	Subdirectores de coordinación de Plantel
+3	Subdirectores de Area
+4	Enlaces Técnicos Escolares
+5	Eslaces Técnicos Semiescolar
+6	Jefes de Servicios
+7	Jefes de Apoyo Técnico
+8	Jefes de Unidad Departamental
+\.
+
+
+--
+-- Name: cat_grupo_id_seq; Type: SEQUENCE SET; Schema: public; Owner: kylix
+--
+
+SELECT pg_catalog.setval('cat_grupo_id_seq', 8, true);
+
+
+--
+-- Data for Name: cat_instrucciones; Type: TABLE DATA; Schema: public; Owner: kylix
+--
+
+COPY cat_instrucciones (id, nombre) FROM stdin;
+1	DAR ATENCIÓN
+2	DAR SEGUIMIENTO
+3	TRATAR EN ACUERDO
+4	PREPARAR OFICIO DE RESPUESTA
+5	PARA CONOCIMIENTO
+6	PARA ARCHIVO
+\.
+
+
+--
+-- Name: cat_instrucciones_id_seq; Type: SEQUENCE SET; Schema: public; Owner: kylix
+--
+
+SELECT pg_catalog.setval('cat_instrucciones_id_seq', 6, true);
+
+
+--
+-- Data for Name: cat_perfiles; Type: TABLE DATA; Schema: public; Owner: kylix
+--
+
+COPY cat_perfiles (id, nombre) FROM stdin;
+1	Recepcionista
+4	Administrador del Sistema
+3	Jefe de Unidad Administrativa
+2	Recepcionistas con Directorio 
+\.
+
+
+--
+-- Name: cat_perfiles_id_seq; Type: SEQUENCE SET; Schema: public; Owner: kylix
+--
+
+SELECT pg_catalog.setval('cat_perfiles_id_seq', 1, true);
+
+
+--
+-- Data for Name: cat_status; Type: TABLE DATA; Schema: public; Owner: kylix
+--
+
+COPY cat_status (id, "Nombre") FROM stdin;
+1	Activo
+2	Inactivo
+\.
+
+
+--
+-- Name: cat_status_id_seq; Type: SEQUENCE SET; Schema: public; Owner: kylix
+--
+
+SELECT pg_catalog.setval('cat_status_id_seq', 2, true);
+
+
+--
+-- Data for Name: cat_status_turno; Type: TABLE DATA; Schema: public; Owner: kylix
+--
+
+COPY cat_status_turno (id, nombre) FROM stdin;
+1	Pendiente
+2	Solucinado
+\.
+
+
+--
+-- Name: cat_status_turno_id_seq; Type: SEQUENCE SET; Schema: public; Owner: kylix
+--
+
+SELECT pg_catalog.setval('cat_status_turno_id_seq', 2, true);
+
+
+--
+-- Data for Name: correspondencia; Type: TABLE DATA; Schema: public; Owner: kylix
+--
+
+COPY correspondencia (id, id_docto, folio, folio_inst, destinatario, tipo, estado_acuse, fecha_acuse, caracter, estado_rem, estado_dest, estado, fecha_reg, fecha_mod, user_reg, user_mod, doc_archivo, estado_archivo) FROM stdin;
+\.
+
+
+--
+-- Name: correspondencia_id_seq; Type: SEQUENCE SET; Schema: public; Owner: kylix
+--
+
+SELECT pg_catalog.setval('correspondencia_id_seq', 1, false);
+
+
+--
+-- Data for Name: datos_personales; Type: TABLE DATA; Schema: public; Owner: kylix
+--
+
+COPY datos_personales (id, nombre, apellido_p, apellido_m, genero, fecha_nac, email, status, fecha_reg, fecha_mod, user_reg, user_mod) FROM stdin;
+\.
+
+
+--
+-- Name: datos_personales_id_seq; Type: SEQUENCE SET; Schema: public; Owner: kylix
+--
+
+SELECT pg_catalog.setval('datos_personales_id_seq', 1, false);
+
+
+--
+-- Data for Name: directorio; Type: TABLE DATA; Schema: public; Owner: kylix
+--
+
+COPY directorio (id, id_area, id_dp, cargo, status, fecha_reg, fecha_mod, user_reg, user_mod, id_grupo) FROM stdin;
+\.
+
+
+--
+-- Name: directorio_id_seq; Type: SEQUENCE SET; Schema: public; Owner: kylix
+--
+
+SELECT pg_catalog.setval('directorio_id_seq', 1, false);
+
+
+--
+-- Data for Name: documentos; Type: TABLE DATA; Schema: public; Owner: kylix
+--
+
+COPY documentos (id, remitente, documento, referencia, tipo_docto, asunto, tipo_caracter, fecha, estado, fecha_reg, fecha_mod, user_reg, user_mod) FROM stdin;
+\.
+
+
+--
+-- Name: documentos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: kylix
+--
+
+SELECT pg_catalog.setval('documentos_id_seq', 1, false);
+
+
+--
+-- Data for Name: estado_correspondencia; Type: TABLE DATA; Schema: public; Owner: kylix
+--
+
+COPY estado_correspondencia (id, nombre) FROM stdin;
+1	NUEVA CORRESPONDENCIA
+2	CORRESPONDENCIA ENVIADA
+\.
+
+
+--
+-- Name: estado_correspondencia_id_seq; Type: SEQUENCE SET; Schema: public; Owner: kylix
+--
+
+SELECT pg_catalog.setval('estado_correspondencia_id_seq', 2, true);
+
+
+--
+-- Data for Name: expedientes; Type: TABLE DATA; Schema: public; Owner: kylix
+--
+
+COPY expedientes (id, id_corresp, serie, expediente, fecha_reg, fecha_mod, user_reg, user_mod) FROM stdin;
+\.
+
+
+--
+-- Name: expedientes_id_seq; Type: SEQUENCE SET; Schema: public; Owner: kylix
+--
+
+SELECT pg_catalog.setval('expedientes_id_seq', 1, false);
+
+
+--
+-- Data for Name: menus; Type: TABLE DATA; Schema: public; Owner: kylix
+--
+
+COPY menus (id, parent_id, "position", label, link, nivel) FROM stdin;
+\.
+
+
+--
+-- Name: menus_id_seq; Type: SEQUENCE SET; Schema: public; Owner: kylix
+--
+
+SELECT pg_catalog.setval('menus_id_seq', 1, false);
+
+
+--
+-- Data for Name: permisos; Type: TABLE DATA; Schema: public; Owner: kylix
+--
+
+COPY permisos (id, id_menu, id_perfil, parent_id, label, "position", link, bloq) FROM stdin;
+\.
+
+
+--
+-- Name: permisos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: kylix
+--
+
+SELECT pg_catalog.setval('permisos_id_seq', 1, false);
+
+
+--
+-- Data for Name: tipo_copia; Type: TABLE DATA; Schema: public; Owner: kylix
+--
+
+COPY tipo_copia (id, nombre) FROM stdin;
+1	ORIGINAL
+2	COPIA 
+3	COPIA
+\.
+
+
+--
+-- Name: tipo_copia_id_seq; Type: SEQUENCE SET; Schema: public; Owner: kylix
+--
+
+SELECT pg_catalog.setval('tipo_copia_id_seq', 3, true);
+
+
+--
+-- Data for Name: tipo_doc; Type: TABLE DATA; Schema: public; Owner: kylix
+--
+
+COPY tipo_doc (id, alias, nombre, permiso) FROM stdin;
+1	OF	OFICIO	1
+2	T	TARJETA	1
+3	DOC	DOCUMENTO	1
+4	C	CIRCULAR	2
+7	TI	TARJETA INFORMATIVA	1
+6	NI	NOTA INFORMATIVA	1
+5	ES	ESCRITO	1
+8	MIN	MINUTA	1
+9	CARTA	CARTA	1
+\.
+
+
+--
+-- Name: tipo_doc_id_seq; Type: SEQUENCE SET; Schema: public; Owner: kylix
+--
+
+SELECT pg_catalog.setval('tipo_doc_id_seq', 9, true);
+
+
+--
+-- Data for Name: turnos; Type: TABLE DATA; Schema: public; Owner: kylix
+--
+
+COPY turnos (id, folio, id_corresp, remitente, estado_rem, destinatario, estado_dest, instruccion1, instruccion2, instruccion_adicional, caracter, fecha_plazo, doc_respuesta, solucion, fecha_turno, fecha_solucion, estado_sol, estado, fecha_reg, fecha_mod, user_reg, user_mod, num_expediente) FROM stdin;
+\.
+
+
+--
+-- Name: turnos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: kylix
+--
+
+SELECT pg_catalog.setval('turnos_id_seq', 1, false);
+
+
+--
+-- Data for Name: usuarios; Type: TABLE DATA; Schema: public; Owner: kylix
+--
+
+COPY usuarios (id, id_area, id_dp, id_perfil, usuario, password, status, fecha_reg, fecha_mod, user_reg, user_mod, ip) FROM stdin;
+1	1	1	4	cesar.morones	ec20e850c5f2634e90b9380c37c220c1	1	\N	\N	\N	\N	\N
+\.
+
+
+--
+-- Name: usuarios_id_seq; Type: SEQUENCE SET; Schema: public; Owner: kylix
+--
+
+SELECT pg_catalog.setval('usuarios_id_seq', 1, true);
+
+
+--
+-- Name: areas_pkey; Type: CONSTRAINT; Schema: public; Owner: kylix; Tablespace: 
+--
+
+ALTER TABLE ONLY areas
+    ADD CONSTRAINT areas_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: caracter_pk; Type: CONSTRAINT; Schema: public; Owner: kylix; Tablespace: 
+--
+
+ALTER TABLE ONLY cat_caracter
+    ADD CONSTRAINT caracter_pk PRIMARY KEY (id);
+
+
+--
+-- Name: cat_grupo_pkey; Type: CONSTRAINT; Schema: public; Owner: kylix; Tablespace: 
+--
+
+ALTER TABLE ONLY cat_grupo
+    ADD CONSTRAINT cat_grupo_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: cat_status_pkey; Type: CONSTRAINT; Schema: public; Owner: kylix; Tablespace: 
+--
+
+ALTER TABLE ONLY cat_status
+    ADD CONSTRAINT cat_status_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: cat_status_turno_pk; Type: CONSTRAINT; Schema: public; Owner: kylix; Tablespace: 
+--
+
+ALTER TABLE ONLY cat_status_turno
+    ADD CONSTRAINT cat_status_turno_pk PRIMARY KEY (id);
+
+
+--
+-- Name: correspondencia_pkey; Type: CONSTRAINT; Schema: public; Owner: kylix; Tablespace: 
+--
+
+ALTER TABLE ONLY correspondencia
+    ADD CONSTRAINT correspondencia_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: datos_personales2_pkey; Type: CONSTRAINT; Schema: public; Owner: kylix; Tablespace: 
+--
+
+ALTER TABLE ONLY datos_personales
+    ADD CONSTRAINT datos_personales2_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: directorio_pkey; Type: CONSTRAINT; Schema: public; Owner: kylix; Tablespace: 
+--
+
+ALTER TABLE ONLY directorio
+    ADD CONSTRAINT directorio_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: documentos_pkey; Type: CONSTRAINT; Schema: public; Owner: kylix; Tablespace: 
+--
+
+ALTER TABLE ONLY documentos
+    ADD CONSTRAINT documentos_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: estado_cor; Type: CONSTRAINT; Schema: public; Owner: kylix; Tablespace: 
+--
+
+ALTER TABLE ONLY estado_correspondencia
+    ADD CONSTRAINT estado_cor PRIMARY KEY (id);
+
+
+--
+-- Name: expedientes_pkey; Type: CONSTRAINT; Schema: public; Owner: kylix; Tablespace: 
+--
+
+ALTER TABLE ONLY expedientes
+    ADD CONSTRAINT expedientes_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: menus_pkey; Type: CONSTRAINT; Schema: public; Owner: kylix; Tablespace: 
+--
+
+ALTER TABLE ONLY menus
+    ADD CONSTRAINT menus_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: perfiles_pk; Type: CONSTRAINT; Schema: public; Owner: kylix; Tablespace: 
+--
+
+ALTER TABLE ONLY cat_perfiles
+    ADD CONSTRAINT perfiles_pk PRIMARY KEY (id);
+
+
+--
+-- Name: permisos_pkey; Type: CONSTRAINT; Schema: public; Owner: kylix; Tablespace: 
+--
+
+ALTER TABLE ONLY permisos
+    ADD CONSTRAINT permisos_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: pk_inst; Type: CONSTRAINT; Schema: public; Owner: kylix; Tablespace: 
+--
+
+ALTER TABLE ONLY cat_instrucciones
+    ADD CONSTRAINT pk_inst PRIMARY KEY (id);
+
+
+--
+-- Name: tipocopia; Type: CONSTRAINT; Schema: public; Owner: kylix; Tablespace: 
+--
+
+ALTER TABLE ONLY tipo_copia
+    ADD CONSTRAINT tipocopia PRIMARY KEY (id);
+
+
+--
+-- Name: tipodoc; Type: CONSTRAINT; Schema: public; Owner: kylix; Tablespace: 
+--
+
+ALTER TABLE ONLY tipo_doc
+    ADD CONSTRAINT tipodoc PRIMARY KEY (id);
+
+
+--
+-- Name: turnos_pk; Type: CONSTRAINT; Schema: public; Owner: kylix; Tablespace: 
+--
+
+ALTER TABLE ONLY turnos
+    ADD CONSTRAINT turnos_pk PRIMARY KEY (id);
+
+
+--
+-- Name: usuarios_pkey; Type: CONSTRAINT; Schema: public; Owner: kylix; Tablespace: 
+--
+
+ALTER TABLE ONLY usuarios
+    ADD CONSTRAINT usuarios_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: public; Type: ACL; Schema: -; Owner: postgres
+--
+
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON SCHEMA public FROM postgres;
+GRANT ALL ON SCHEMA public TO postgres;
+GRANT ALL ON SCHEMA public TO PUBLIC;
+
+
+--
+-- PostgreSQL database dump complete
+--
+

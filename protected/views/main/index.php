@@ -6,7 +6,7 @@
 
    function alerta(){
                 //un alert
-                alertify.alert("<h1><b>Aviso importante!!!</b></h1> <h2>Se han habilitado los informes, se generán por criterios de busqueda y se pueden exportar a excel.</h2>", function () {
+                alertify.alert("<h1><b>Aviso importante!!!</b></h1> <h2>FIDEICOMISO EDUACION GARANTIZADA</h2><Br></h2><h2>Bienvenido al Sistema de Gestión.</h2>", function () {
                     //aqui introducimos lo que haremos tras cerrar la alerta.
                     //por ejemplo -->  location.href = 'http://www.google.es/';  <-- Redireccionamos a GOOGLE.
                     ok();

@@ -1,0 +1,360 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"BUT",
+				"button"
+			],
+			[
+				"is",
+				"isset"
+			],
+			[
+				"pri",
+				"print_r"
+			],
+			[
+				"ch",
+				"charset"
+			],
+			[
+				"em",
+				"empty"
+			],
+			[
+				"ar",
+				"arg_list"
+			],
+			[
+				"var",
+				"var_dump"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/var/www/html/sig",
+		"/var/www/html/sig/docto",
+		"/var/www/html/sig/js",
+		"/var/www/html/sig/protected",
+		"/var/www/html/sig/protected/config",
+		"/var/www/html/sig/protected/data",
+		"/var/www/html/sig/protected/views",
+		"/var/www/html/sig/protected/views/layouts",
+		"/var/www/html/sig/protected/views/site"
+	],
+	"file_history":
+	[
+		"/var/www/html/sig/protected/data/vistas.sql",
+		"/var/www/html/sig/protected/views/layouts/main.php",
+		"/var/www/html/sig/protected/views/layouts/login.php",
+		"/var/www/html/sig/protected/views/site/login.php",
+		"/var/www/html/sig/protected/config/main.php",
+		"/home/cesar/Descargas/ninos.php",
+		"/home/cesar/Descargas/invitado.php",
+		"/home/cesar/Descargas/index.php",
+		"/var/www/html/silac/protected/controllers/SesionesController.php",
+		"/var/www/html/silac/protected/views/sesiones/_form.php",
+		"/var/www/html/silac/protected/models/Sesiones.php",
+		"/var/www/html/silac/protected/views/sesiones/admin.php",
+		"/var/www/html/silac/protected/views/sesiones/create.php",
+		"/var/www/html/silac/index-test.php",
+		"/var/www/html/silac/.gitignore",
+		"/home/cesar/.ssh/id_rsa.pub",
+		"/var/www/html/basic/config/web.php",
+		"/var/www/html/silac/protected/views/layouts/main.php",
+		"/var/www/html/silac/protected/views/main/index.php",
+		"/var/www/html/silac/protected/views/catPlanteles/admin.php",
+		"/var/www/html/silac/protected/controllers/CatMedidaController.php",
+		"/var/www/html/silac/protected/views/catMedida/admin.php",
+		"/var/www/html/silac/protected/views/invmat/create.php",
+		"/var/www/html/silac/protected/views/invReact/create.php",
+		"/var/www/html/silac/protected/controllers/InvmatController.php",
+		"/var/www/html/silac/protected/controllers/ApiController.php",
+		"/var/www/html/silac/protected/views/invReact/admin.php",
+		"/var/www/html/silac/protected/views/invmat/admin.php",
+		"/var/www/html/silac/protected/views/catMat/admin.php",
+		"/var/www/html/silac/protected/views/catReact/admin.php",
+		"/var/www/html/silac/protected/views/main/xcharts.php",
+		"/var/www/html/silac/protected/views/site/indexresp.php",
+		"/var/www/html/silac/protected/config/main.php",
+		"/var/www/html/silac/protected/controllers/SiteController.php",
+		"/var/www/html/silac/protected/controllers/MainController.php",
+		"/var/www/html/silac/protected/views/site/calendario.php",
+		"/var/www/html/silac/protected/views/main/calendario.php",
+		"/var/www/html/silac/json/events.json",
+		"/var/www/html/silac/protected/views/layouts/main2.php",
+		"/var/www/html/silac/protected/views/catCatMat/admin.php",
+		"/var/www/html/silac/js/devoops.js",
+		"/var/www/html/silac/protected/views/layouts/login.php",
+		"/var/www/html/silac/protected/views/site/login.php",
+		"/var/www/html/silac/protected/views/site/main.php",
+		"/var/www/html/sitio/sindicato/login.php",
+		"/home/cesar/Escritorio/nuevo_cambio/.htaccess",
+		"/var/www/html/sitio/sindicato/validate_login.php",
+		"/home/cesar/Escritorio/nuevo_cambio/login.php",
+		"/home/cesar/Descargas/sitio-12 (2)/sitio-12/js/functions.js",
+		"/var/www/html/spdgm/.htaccess",
+		"/var/www/html/sitio/sindicato/validate_prueba4.php",
+		"/var/www/html/encuesta/index.php",
+		"/var/www/html/encuesta/mail.php",
+		"/var/www/html/encuesta/captura_datos.php",
+		"/var/www/html/sitio/sindicato/validate_login_org.php",
+		"/var/www/html/sitio/sindicato/test4.php",
+		"/home/cesar/Escritorio/cambios/sindicato/login.php",
+		"/var/www/html/sitio/sindicato/validate_logintelcel.php",
+		"/var/www/html/alertify/ejemplo.html",
+		"/home/cesar/Escritorio/cambios/sindicato/validate_login.php",
+		"/var/www/html/alertify/grunt.js",
+		"/var/www/html/sigedo/protected/views/documentos/_form.php",
+		"/var/www/html/sitio/sindicato/index.php",
+		"/var/www/html/sitio/sindicato/test3.php",
+		"/var/www/html/sitio/sindicato/test1.php",
+		"/var/www/html/sitio/sindicato/prueba_web4.php",
+		"/var/www/html/sitio/js/functions.js",
+		"/home/cesar/Descargas/correyjuegadb.15032016.sql",
+		"/var/www/html/sitio/connection/web.php",
+		"/var/www/html/sigedo/protected/controllers/ApipdfController.php",
+		"/var/www/html/sedeco/protected/controllers/ApipdfController.php",
+		"/var/www/html/sedeco/protected/views/site/page67.php",
+		"/var/www/html/sedeco/protected/views/site/page55.php",
+		"/var/www/html/sigedo/protected/views/main/index.php",
+		"/var/www/html/sigedo/protected/views/documentos/_form2.php",
+		"/var/www/html/sigedo/protected/controllers/DocumentosController.php",
+		"/var/www/html/sigedo/protected/views/informes/_salida.php",
+		"/var/www/html/sigedo/protected/views/informes/_turnos.php",
+		"/var/www/html/sigedo/protected/views/informes/index.php",
+		"/var/www/html/sigedo/protected/controllers/InformesController.php",
+		"/var/www/html/sigedo/protected/views/documentos/_formc.php",
+		"/var/www/html/sigedo/protected/views/documentos/create2.php",
+		"/var/www/html/sigedo/protected/views/layouts/main.php",
+		"/var/www/html/sigedo/sigedo.sublime-project",
+		"/var/www/html/sigedo/protected/config/main.php",
+		"/var/www/html/sigedo/protected/controllers/TurnosController.php",
+		"/var/www/html/sigedo/protected/views/turnos/_form.php",
+		"/home/cesar/Descargas/lab_ciencias.out",
+		"/var/www/html/silac/app3/controllers/consultas_controller.php",
+		"/var/www/html/sigedo/protected/controllers/CorrespondenciaController.php",
+		"/var/www/html/silac/app/config/database.php",
+		"/var/www/html/intra_ppe/app/config/database.php",
+		"/media/cesar/OneTouch 4/Proyectos/respaldos/intra_ppe/app/config/bootstrap.php",
+		"/media/cesar/OneTouch 4/Proyectos/respaldos/intra_ppe/app/config/routes.php",
+		"/media/cesar/OneTouch 4/Proyectos/respaldos/ppe_pasec/app/controllers/eventos_controller.php",
+		"/var/www/html/silac/index.php",
+		"/var/www/html/silac/app/views/consultas/calendario_mes.ctp",
+		"/var/www/html/sigedo/protected/views/correspondencia/_form2.php",
+		"/var/www/html/sigedo/protected/models/Areas.php",
+		"/home/cesar/Descargas/.htaccess",
+		"/var/www/html/sigedo/css/my-custom-styles.css",
+		"/var/www/html/sigiems2/clases/config/Config.class.php",
+		"/var/www/html/sigiems2/includes/config.inc.php",
+		"/var/www/html/sigedo/protected/controllers/CorrespondenciaControllerresp.php",
+		"/home/cesar/Descargas/RadiacionUVB2015-radiacion_2015UVB.json",
+		"/var/www/html/sigedo/protected/views/documentos/_formupdate.php",
+		"/var/www/html/sigedo/protected/models/SalidaView.php",
+		"/var/www/html/sigedo/protected/models/EntradaView.php",
+		"/var/www/html/sigedo/protected/controllers/MainController.php",
+		"/var/www/html/sigedo/protected/views/correspondencia/_form3.php",
+		"/var/www/html/sigedo/protected/views/turnosList/admin.php",
+		"/var/www/html/sigedo/protected/views/directorioView/admin.php",
+		"/var/www/html/silac/apps/frontend/modules/ingreso/actions/actions.class.php",
+		"/var/www/html/sigedo/protected/models/TurnosList.php",
+		"/var/www/html/sigedo/protected/views/turnos/_info.php",
+		"/var/www/html/sigedo/protected/models/Turnos.php",
+		"/var/www/html/sigedo/protected/models/Expedientes.php",
+		"/var/www/html/sigedo/protected/controllers/ExpedientesController.php",
+		"/var/www/html/sigedo/protected/views/turnos/returnar.php",
+		"/var/www/html/sigedo/protected/views/turnos/create.php",
+		"/var/www/html/sigedo/protected/views/expedientes/create.php",
+		"/var/www/html/sigedo/protected/views/expedientes/update.php",
+		"/var/www/html/sigedo/protected/views/expedientes/_form.php",
+		"/var/www/html/sigedo/protected/views/directorio/_form2.php",
+		"/var/www/html/sigedo/protected/views/turnos/_formr.php"
+	],
+	"find":
+	{
+		"height": 38.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"756",
+			"					<i class=\"fa fa-usd\"></i>756",
+			"<i class=\"fa fa-usd\"></i>",
+			"LoadAjaxContent",
+			"auth",
+			"endif",
+			"sindicato",
+			"inicio",
+			"el id",
+			"echo",
+			"acuse",
+			"acusef",
+			"ap1Ind72",
+			"titulo",
+			"performAjaxValidation",
+			"ASCII",
+			"SQL_ASCII",
+			"public function getImagen(){\n\n	//	$imagen=\"validado.png\";\n		if($this->estado_acuse=='1'){\n		$imagen=\"<div class=\\\"label label-success\\\"><i class=\\\"fa fa-check-circle\\\"></i> CONFIRMADO</button></div>\";\n		}\n	    if($this->estado_acuse=='0'){\n		$imagen=\"<div class=\\\"label label-danger\\\"><i class=\\\"fa fa-danger\\\"></i> SIN CONFIRMAR</div>\";	\n		}\n\n\n		return $imagen;\n\n		}",
+			"correspondencia"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 38.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "fidegar.sublime-project",
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 1028.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"~/Descargas/fidegar.sublime-workspace"
+			],
+			[
+				"se",
+				"/var/www/html/seminario/semianrio.sublime-project"
+			],
+			[
+				"si",
+				"/var/www/html/sigedo/sigedo.sublime-project"
+			]
+		],
+		"width": 1863.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 268.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

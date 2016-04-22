@@ -69,7 +69,7 @@ class DatosPersonales extends CActiveRecord
 			'apellido_p' => 'Apellido Paterno',
 			'apellido_m' => 'Apellido Materno',
 			'genero' => 'Genero',
-			'fecha_nac' => 'Fecha Nacimiento',
+			'fecha_nac' => 'Fecha de Registro',
 			'email' => 'Email',
 			'status' => 'Status',
 			'fecha_reg' => 'Fecha Reg',

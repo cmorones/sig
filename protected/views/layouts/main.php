@@ -618,7 +618,7 @@ if($perfil==4){
 							<h5 class="label label-default"><i class="fa fa-info-circle"></i> Documentos</h5>
 							<div align="center">
 							<ul class="list-unstyled list-info-sidebar bottom-30px">
-								<li class="data-row">Manual de Usuario <a href="<?php echo Yii::app()->request->baseUrl;?>/docto/Manual_UsuarioSigedo_2016.pdf" target='_blank'><div id="btnExport"><?php echo CHtml::image(Yii::app()->request->baseUrl . '/images/pdf.png')?></div></a></li>
+								<li class="data-row">Manual de Usuario <a href="<?php echo Yii::app()->request->baseUrl;?>/docto/Manual_UsuarioSig_2016.pdf" target='_blank'><div id="btnExport"><?php echo CHtml::image(Yii::app()->request->baseUrl . '/images/pdf.png')?></div></a></li>
 							</ul>
 							</div>
 
